@@ -1,0 +1,13 @@
+{
+    "name": "dumistoklus/svg-xsd-schema",
+    "type": "library",
+    "require-dev": {},
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ilia Goldfarb",
+            "email": "da@konbur.ru"
+        }
+    ],
+    "require": {}
+}

@@ -1,0 +1,45 @@
+<?xml version='1.0'?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.w3.org/2001/XMLSchema-hasFacetAndProperty">
+    <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="namespace.xsd"/>
+
+    <xs:element name="hasFacet">
+        <xs:complexType>
+            <xs:attribute name="name" use="required">
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="length"/>
+                        <xs:enumeration value="minLength"/>
+                        <xs:enumeration value="maxLength"/>
+                        <xs:enumeration value="pattern"/>
+                        <xs:enumeration value="enumeration"/>
+                        <xs:enumeration value="maxInclusive"/>
+                        <xs:enumeration value="maxExclusive"/>
+                        <xs:enumeration value="minInclusive"/>
+                        <xs:enumeration value="minExclusive"/>
+                        <xs:enumeration value="totalDigits"/>
+                        <xs:enumeration value="fractionDigits"/>
+                        <xs:enumeration value="whiteSpace"/>
+                        <xs:enumeration value="maxScale"/>
+                        <xs:enumeration value="minScale"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="hasProperty">
+        <xs:complexType>
+            <xs:attribute name="name" use="required">
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="ordered"/>
+                        <xs:enumeration value="bounded"/>
+                        <xs:enumeration value="cardinality"/>
+                        <xs:enumeration value="numeric"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="value" type="xs:normalizedString" use="required"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
