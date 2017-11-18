@@ -268,17 +268,7 @@
                 inherit
             </xs:documentation>
         </xs:annotation>
-        <xs:union>
-            <xs:simpleType>
-                <xs:restriction base="xs:string">
-                    <xs:enumeration value="absolute-size"/>
-                    <xs:enumeration value="relative-size"/>
-                    <xs:enumeration value="length"/>
-                    <xs:enumeration value="percentage"/>
-                    <xs:enumeration value="inherit"/>
-                </xs:restriction>
-            </xs:simpleType>
-        </xs:union>
+        <xs:restriction base="xs:string"/>
     </xs:simpleType>
     <xs:simpleType name="FontSizeAdjustValueType">
         <xs:annotation>
