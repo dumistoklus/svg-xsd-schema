@@ -28,6 +28,10 @@ function init($directoryValid, $directoryInvalid, $xsdPath)
         $result = testFile($file, $xsdPath);
         if ($result !== true) {
             $errors[] = $file . ' is invalid';
+
+            foreach ($result as $error) {
+                echo $error->message;
+            }
         }
     }
 

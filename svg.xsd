@@ -278,6 +278,9 @@
                     <xs:enumeration value="inherit"/>
                 </xs:restriction>
             </xs:simpleType>
+            <xs:simpleType>
+                <xs:restriction base="xs:decimal"/>
+            </xs:simpleType>
         </xs:union>
     </xs:simpleType>
     <xs:simpleType name="FontSizeAdjustValueType">
