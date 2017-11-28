@@ -264,22 +264,17 @@
     <xs:simpleType name="FontSizeValueType">
         <xs:annotation>
             <xs:documentation>'font-size' property/attribute value</xs:documentation>
-            <xs:documentation>&lt;absolute-size&gt; | &lt;relative-size&gt; | &lt;length&gt; | &lt;percentage&gt; |
-                inherit
+            <xs:documentation>&lt;absolute-size&gt; | &lt;relative-size&gt; | &lt;length&gt; | &lt;percentage&gt; | inherit
             </xs:documentation>
         </xs:annotation>
         <xs:union>
             <xs:simpleType>
                 <xs:restriction base="xs:string">
-                    <xs:enumeration value="absolute-size"/>
-                    <xs:enumeration value="relative-size"/>
-                    <xs:enumeration value="length"/>
-                    <xs:enumeration value="percentage"/>
                     <xs:enumeration value="inherit"/>
                 </xs:restriction>
             </xs:simpleType>
             <xs:simpleType>
-                <xs:restriction base="xs:decimal"/>
+                <xs:restriction base="LengthType"/>
             </xs:simpleType>
         </xs:union>
     </xs:simpleType>
