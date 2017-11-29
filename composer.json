@@ -1,5 +1,6 @@
 {
     "name": "dumistoklus/svg-xsd-schema",
+    "description": "XSD Schema For SVG Validation",
     "type": "library",
     "require-dev": {},
     "license": "MIT",
