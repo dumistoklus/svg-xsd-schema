@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Scalable Vector Graphics (SVG) XML Schema   -->
-<!-- Edited with XML Spy 2010 by Mike Friedman (Microsoft Corporation) -->
-<!-- Acknowledgement: Chris Lilley/W3C-->
 <xs:schema xmlns="http://www.w3.org/2000/svg" xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xlink="http://www.w3.org/1999/xlink"
-           targetNamespace="http://www.w3.org/2000/svg" elementFormDefault="unqualified"
-           attributeFormDefault="unqualified">
+           targetNamespace="http://www.w3.org/2000/svg">
     <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="xlink.xsd"/>
     <xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="namespace.xsd"/>
 
@@ -27,7 +24,7 @@
     </xs:simpleType>
     <xs:simpleType name="angle">
         <xs:restriction base="xs:string">
-            <xs:pattern value="(\+|-)?\d{1,4}(deg|grad|rad)?"/>
+            <xs:pattern value="[-+]?\d{1,4}(deg|grad|rad)?"/>
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="BaselineShiftValueType">
@@ -103,7 +100,7 @@
             <xs:documentation>media type, as per [RFC2045]</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
-            <xs:pattern value="(text|image|audio|video|application|multipart|message)[\.\+\-/\w]*"/>
+            <xs:pattern value="(text|image|audio|video|application|multipart|message)[-.+/\w]*"/>
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="CoordinateType">
@@ -114,10 +111,7 @@
                 Perhaps it is possible to represent this as a xs:union by declaring unit idenifiers as a type?
             </xs:documentation>
         </xs:annotation>
-        <xs:restriction base="xs:string">
-            <xs:pattern
-                    value="((((\+|\-)?((\d+)))|((\+|\-)?(((((\d+)?\.(\d+))|((\d+)\.))([eE](\+|\-)?(\d+))?)|((\d+)([eE](\+|\-)?(\d+))))))(em|ex|px|pt|pc|cm|mm|in|%)?)"/>
-        </xs:restriction>
+        <xs:restriction base="LengthType"/>
     </xs:simpleType>
     <xs:simpleType name="CoordinatesType">
         <xs:annotation>
@@ -264,7 +258,8 @@
     <xs:simpleType name="FontSizeValueType">
         <xs:annotation>
             <xs:documentation>'font-size' property/attribute value</xs:documentation>
-            <xs:documentation>&lt;absolute-size&gt; | &lt;relative-size&gt; | &lt;length&gt; | &lt;percentage&gt; | inherit
+            <xs:documentation>&lt;absolute-size&gt; | &lt;relative-size&gt; | &lt;length&gt; | &lt;percentage&gt; |
+                inherit
             </xs:documentation>
         </xs:annotation>
         <xs:union>
@@ -361,7 +356,7 @@
         </xs:annotation>
         <xs:restriction base="xs:string">
             <xs:pattern
-                    value="((((\+|\-)?((\d+)))|((\+|\-)?(((((\d+)?\.(\d+))|((\d+)\.))([eE](\+|\-)?(\d+))?)|((\d+)([eE](\+|\-)?(\d+))))))(em|ex|px|pt|pc|cm|mm|in|%)?)"/>
+                    value="((([-+]?(\d+))|([-+]?(((((\d+)?\.(\d+))|((\d+)\.))([eE][-+]?(\d+))?)|((\d+)([eE][-+]?(\d+))))))(em|ex|px|pt|pc|cm|mm|in|%)?)"/>
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="LengthsType">
@@ -477,7 +472,7 @@
             <xs:documentation>a list of points</xs:documentation>
         </xs:annotation>
         <xs:restriction base="xs:string">
-            <xs:pattern value="((\+|-)?\d{1,4},(\+|-)?\d{1,4}\s*)*"/>
+            <xs:pattern value="([-+]?\d{1,4},[-+]?\d{1,4}\s*)*"/>
         </xs:restriction>
     </xs:simpleType>
     <xs:simpleType name="PreserveAspectRatioSpecType">
@@ -1290,7 +1285,7 @@
         <xs:attribute name="class" type="ClassListType"/>
         <xs:attribute name="style" type="StyleSheetType"/>
         <xs:attributeGroup ref="PresentationAttributes-All"/>
-        <xs:attribute name="viewBox" type="ViewBoxSpecType" use="required"/>
+        <xs:attribute name="viewBox" type="ViewBoxSpecType"/>
         <xs:attribute name="preserveAspectRatio" type="PreserveAspectRatioSpecType" default="xMidYMid meet"/>
         <xs:attribute name="zoomAndPan" default="magnify">
             <xs:simpleType>
@@ -2874,7 +2869,7 @@
 		-->
         <!-- change from string to URI -->
     </xs:complexType>
-    <xs:complexType name="viewType" mixed="false">
+    <xs:complexType name="viewType">
         <xs:group ref="descTitleMetadata" minOccurs="0"/>
         <xs:attributeGroup ref="stdAttrs"/>
         <xs:attribute name="externalResourcesRequired" type="xs:boolean"/>
